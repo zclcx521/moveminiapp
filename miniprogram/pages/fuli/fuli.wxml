@@ -1,0 +1,38 @@
+<!--pages/fuli/fuli.wxml-->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view 
+      wx:for="{{navItems}}" 
+      wx:key="id" 
+      class="nav-item {{item.active ? 'active' : ''}}" 
+      bindtap="switchNav" 
+      data-id="{{item.id}}"
+    >
+      {{item.name}}
+    </view>
+  </view>
+  
+  <view class="content">
+    <!-- 活动卡片区域 -->
+    <view class="activity-cards">
+      <!-- 砍剧大联盟卡片 -->
+      <view class="card blue-card" bindtap="onCardTap" data-id="1">
+        <view class="card-content">
+          <view class="card-title">砍剧大联盟</view>
+          <view class="card-subtitle">邀请好友一起砍剧</view>
+        </view>
+        <view class="card-tag">砍剧</view>
+      </view>
+      
+      <!-- N元任购卡片 -->
+      <view class="card yellow-card" bindtap="onCardTap" data-id="2">
+        <view class="card-content">
+          <view class="card-title">N元</view>
+          <view class="card-subtitle">任购</view>
+        </view>
+        <view class="card-tag">9.9任购3部</view>
+      </view>
+    </view>
+  </view>
+</view>

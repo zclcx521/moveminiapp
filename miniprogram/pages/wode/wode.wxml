@@ -1,0 +1,57 @@
+<!--pages/wode/wode.wxml-->
+<view class="container">
+  <view class="top-bar">
+    <view class="title">我的</view>
+  </view>
+  
+  <view class="user-info">
+    <view class="avatar"></view>
+    <view class="user-detail">
+      <view class="username">用户名</view>
+      <view class="user-level">普通会员</view>
+    </view>
+    <view class="setting-btn">设置</view>
+  </view>
+  
+  <view class="menu-list">
+    <view class="menu-item">
+      <view class="menu-icon"></view>
+      <view class="menu-text">我的收藏</view>
+      <view class="menu-arrow"></view>
+    </view>
+    <view class="menu-item">
+      <view class="menu-icon"></view>
+      <view class="menu-text">观看历史</view>
+      <view class="menu-arrow"></view>
+    </view>
+    <view class="menu-item">
+      <view class="menu-icon"></view>
+      <view class="menu-text">我的订单</view>
+      <view class="menu-arrow"></view>
+    </view>
+    <view class="menu-item">
+      <view class="menu-icon"></view>
+      <view class="menu-text">会员中心</view>
+      <view class="menu-arrow"></view>
+    </view>
+  </view>
+  
+  <view class="service-list">
+    <view class="section-title">客户服务</view>
+    <view class="menu-item">
+      <view class="menu-icon"></view>
+      <view class="menu-text">意见反馈</view>
+      <view class="menu-arrow"></view>
+    </view>
+    <view class="menu-item">
+      <view class="menu-icon"></view>
+      <view class="menu-text">帮助中心</view>
+      <view class="menu-arrow"></view>
+    </view>
+    <view class="menu-item">
+      <view class="menu-icon"></view>
+      <view class="menu-text">关于我们</view>
+      <view class="menu-arrow"></view>
+    </view>
+  </view>
+</view>
