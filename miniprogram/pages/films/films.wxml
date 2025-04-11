@@ -2,7 +2,7 @@
 <!-- 顶部导航栏 -->
 <view class="top-bar">
   <view class="search-icon">
-    <image src="/miniprogram/images/search.png" mode="aspectFit"></image>
+    <image src="/images/search.png" mode="aspectFit"></image>
   </view>
   <view class="top-right">
     <view class="dots">•••</view>
@@ -100,26 +100,3 @@
   </view>
 </scroll-view>
 
-<!-- 底部导航栏 -->
-<view class="tab-bar">
-  <view class="tab-item">
-    <image class="tab-icon" src="https://picsum.photos/30/30" mode="aspectFit"></image>
-    <text class="tab-text">推荐</text>
-  </view>
-  <view class="tab-item active">
-    <image class="tab-icon" src="https://picsum.photos/30/30" mode="aspectFit"></image>
-    <text class="tab-text">剧目</text>
-  </view>
-  <view class="tab-item">
-    <image class="tab-icon" src="https://picsum.photos/30/30" mode="aspectFit"></image>
-    <text class="tab-text">会话</text>
-  </view>
-  <view class="tab-item">
-    <image class="tab-icon" src="https://picsum.photos/30/30" mode="aspectFit"></image>
-    <text class="tab-text">福利</text>
-  </view>
-  <view class="tab-item">
-    <image class="tab-icon" src="https://picsum.photos/30/30" mode="aspectFit"></image>
-    <text class="tab-text">我的</text>
-  </view>
-</view>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="300" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="300" fill="#16A085"/>
+  <rect x="20" y="40" width="160" height="200" rx="5" fill="#1ABC9C"/>
+  <circle cx="100" cy="110" r="40" fill="#ECF0F1"/>
+  <rect x="60" y="160" width="80" height="60" fill="#ECF0F1"/>
+  <path d="M85 100L120 110L85 120V100Z" fill="#16A085"/>
+  <text x="100" y="250" text-anchor="middle" font-size="24" fill="#ECF0F1" font-family="Arial">Drama 3</text>
+  <text x="100" y="280" text-anchor="middle" font-size="16" fill="#D5D8DC" font-family="Arial">2023</text>
+</svg>

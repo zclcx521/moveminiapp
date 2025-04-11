@@ -2,7 +2,7 @@
 <!-- 顶部导航栏 -->
 <view class="top-bar">
   <view class="search-icon">
-    <image src="/miniprogram/images/search.png" mode="aspectFit"></image>
+    <image src="/images/search.png" mode="aspectFit"></image>
   </view>
   <view class="top-right">
     <view class="dots">•••</view>
@@ -112,28 +112,51 @@
       </view>
     </view>
   </view>
-</scroll-view>
 
-<!-- 底部导航栏 -->
-<view class="tab-bar">
-  <view class="tab-item active">
-    <view class="tab-icon">🏠</view>
-    <view class="tab-text">推荐</view>
+  <!-- 电影瀑布流区域 -->
+  <view class="waterfall-container">
+    <view class="waterfall-item">
+      <image class="movie-cover" src="https://picsum.photos/200/300" mode="aspectFill"></image>
+      <view class="movie-info">
+        <view class="movie-title">演员请就位</view>
+        <view class="movie-stats">
+          <view class="stat-item">▶ 98.7w</view>
+          <view class="stat-item">❤ 9.6w</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="waterfall-item">
+      <image class="movie-cover" src="https://picsum.photos/200/300" mode="aspectFill"></image>
+      <view class="movie-info">
+        <view class="movie-title">我在地府开当铺</view>
+        <view class="movie-stats">
+          <view class="stat-item">▶ 214.5w</view>
+          <view class="stat-item">❤ 21.3w</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="waterfall-item">
+      <image class="movie-cover" src="https://picsum.photos/200/300" mode="aspectFill"></image>
+      <view class="movie-info">
+        <view class="movie-title">抢个乞丐做夫君</view>
+        <view class="movie-stats">
+          <view class="stat-item">▶ 131.4w</view>
+          <view class="stat-item">❤ 15.8w</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="waterfall-item">
+      <image class="movie-cover" src="https://picsum.photos/200/300" mode="aspectFill"></image>
+      <view class="movie-info">
+        <view class="movie-title">契约圣女</view>
+        <view class="movie-stats">
+          <view class="stat-item">▶ 101.9w</view>
+          <view class="stat-item">❤ 144.4w</view>
+        </view>
+      </view>
+    </view>
   </view>
-  <view class="tab-item">
-    <view class="tab-icon">⭐</view>
-    <view class="tab-text">剧目</view>
-  </view>
-  <view class="tab-item">
-    <view class="tab-icon">💬</view>
-    <view class="tab-text">会话</view>
-  </view>
-  <view class="tab-item">
-    <view class="tab-icon">🎮</view>
-    <view class="tab-text">福利</view>
-  </view>
-  <view class="tab-item">
-    <view class="tab-icon">👤</view>
-    <view class="tab-text">我的</view>
-  </view>
-</view>
+</scroll-view>
