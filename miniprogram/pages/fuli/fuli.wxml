@@ -14,24 +14,49 @@
   </view>
   
   <view class="content">
-    <!-- 活动卡片区域 -->
-    <view class="activity-cards">
-      <!-- 砍剧大联盟卡片 -->
-      <view class="card blue-card" bindtap="onCardTap" data-id="1">
-        <view class="card-content">
-          <view class="card-title">砍剧大联盟</view>
-          <view class="card-subtitle">邀请好友一起砍剧</view>
-        </view>
-        <view class="card-tag">砍剧</view>
+    <!-- VIP独享剧目区域 -->
+    <view class="section-header">
+      <view class="section-title">
+        <image class="vip-icon" src="/images/vip-icon.png" />
+        <text>VIP独享剧目推荐</text>
       </view>
-      
-      <!-- N元任购卡片 -->
-      <view class="card yellow-card" bindtap="onCardTap" data-id="2">
-        <view class="card-content">
-          <view class="card-title">N元</view>
-          <view class="card-subtitle">任购</view>
+      <view class="more-link">更多 ></view>
+    </view>
+    
+    <view class="vip-dramas">
+      <view class="drama-card" wx:for="{{vipDramas}}" wx:key="id" bindtap="onDramaTap" data-id="{{item.id}}">
+        <view class="drama-cover">
+          <image src="{{item.cover}}" mode="aspectFill" />
+          <view class="vip-tag">VIP</view>
         </view>
-        <view class="card-tag">9.9任购3部</view>
+        <view class="drama-info">
+          <view class="drama-title">{{item.title}}</view>
+          <view class="drama-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 今日星选区域 -->
+    <view class="section-header">
+      <view class="section-title">
+        <text>今日星选</text>
+      </view>
+    </view>
+
+    <view class="today-pick">
+      <view class="pick-card">
+        <view class="pick-cover">
+          <image src="/images/drama2.png" mode="aspectFill" />
+          <view class="vip-tag">VIP</view>
+        </view>
+        <view class="pick-info">
+          <view class="pick-title">{{todayPick.title}}</view>
+          <view class="pick-desc">{{todayPick.desc}}</view>
+          <view class="pick-actions">
+            <button class="play-btn">立即播放</button>
+            <button class="add-btn">+ 追剧</button>
+          </view>
+        </view>
       </view>
     </view>
   </view>

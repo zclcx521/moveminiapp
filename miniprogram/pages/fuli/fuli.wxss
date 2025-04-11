@@ -56,32 +56,156 @@ page {
   overflow-y: auto;
 }
 
-/* 活动卡片样式 */
-.activity-cards {
+/* 区域标题样式 */
+.section-header {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 5px 0;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-/* 卡片样式 */
-.card {
-  width: 100%;
-  height: 140px;
-  border-radius: 12px;
+.section-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.vip-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.more-link {
+  color: #999;
+  font-size: 14px;
+}
+
+/* VIP独享剧目样式 */
+.vip-dramas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.drama-card {
+  display: flex;
+  background: #fff;
+  border-radius: 8px;
   overflow: hidden;
-  position: relative;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 18px;
-  box-sizing: border-box;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 120px;
 }
 
-.blue-card {
-  background-color: #1e90ff;
+.drama-cover {
+  width: 160px;
+  height: 120px;
+  position: relative;
+}
+
+.drama-cover image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vip-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #FF2C54;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.drama-info {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.drama-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.drama-desc {
+  font-size: 14px;
+  color: #666;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 今日星选样式 */
+.today-pick {
+  margin-top: 10px;
+}
+
+.pick-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pick-cover {
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+.pick-cover image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pick-info {
+  padding: 15px;
+}
+
+.pick-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.pick-desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.pick-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.play-btn {
+  flex: 2;
+  background: #FF2C54;
+  color: white;
+  border: none;
+  padding: 8px 0;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.add-btn {
+  flex: 1;
+  background: #F5F5F5;
+  color: #333;
+  border: none;
+  padding: 8px 0;
+  border-radius: 20px;
+  font-size: 14px;
+}
   background-image: linear-gradient(135deg, #1e90ff, #4169e1);
 }
 
