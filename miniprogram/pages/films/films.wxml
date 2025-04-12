@@ -1,102 +1,120 @@
 <!--films.wxml-->
 <!-- 顶部导航栏 -->
-<view class="top-bar">
-  <view class="search-icon">
-    <image src="/images/search.png" mode="aspectFit"></image>
+<view class="container">
+  <view class="top-bar">
+    <view class="search-icon">
+      <image src="/images/search.png" mode="aspectFit"></image>
+    </view>
+    <view class="top-right">
+      <view class="dots">•••</view>
+      <view class="circle"></view>
+    </view>
   </view>
-  <view class="top-right">
-    <view class="dots">•••</view>
-    <view class="circle"></view>
+
+  <!-- 分类标签栏 -->
+  <view class="category-bar">
+    <view class="category-item {{activeTab === 'following' ? 'active' : ''}}" bindtap="switchTab" data-tab="following">在追</view>
+    <view class="category-item {{activeTab === 'recommend' ? 'active' : ''}}" bindtap="switchTab" data-tab="recommend">推荐</view>
+    <view class="category-item {{activeTab === 'playlist' ? 'active' : ''}}" bindtap="switchTab" data-tab="playlist">剧单</view>
   </view>
+
+  <!-- 内容区域 -->
+  <scroll-view class="scrollarea" scroll-y type="list">
+    <!-- 在追页面内容 -->
+    <block wx:if="{{activeTab === 'following'}}">
+      <view class="empty-state">
+        <text>暂无追剧记录</text>
+      </view>
+    </block>
+
+    <!-- 推荐页面内容 -->
+    <block wx:if="{{activeTab === 'recommend'}}">
+      <!-- 第一个剧集区块 -->
+      <view class="film-section">
+        <view class="section-header">
+          <view class="section-title">
+            <view class="title-icon"></view>
+            <text>9月第一周🔥热门新剧速递</text>
+          </view>
+          <view class="more-btn">更多></view>
+        </view>
+        <scroll-view class="film-list" scroll-x="true">
+          <view class="film-item" wx:for="{{filmSection1}}" wx:key="id">
+            <image class="film-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+            <view class="film-title">{{item.title}}</view>
+            <view class="film-tags">
+              <text>{{item.tags}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <!-- 第二个剧集区块 -->
+      <view class="film-section">
+        <view class="section-header">
+          <view class="section-title">
+            <view class="title-icon"></view>
+            <text>都市修仙｜我原来这么强吗？</text>
+          </view>
+          <view class="more-btn">更多></view>
+        </view>
+        <scroll-view class="film-list" scroll-x="true">
+          <view class="film-item" wx:for="{{filmSection2}}" wx:key="id">
+            <image class="film-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+            <view class="film-title">{{item.title}}</view>
+            <view class="film-tags">
+              <text>{{item.tags}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <!-- 第三个剧集区块 -->
+      <view class="film-section">
+        <view class="section-header">
+          <view class="section-title">
+            <view class="title-icon"></view>
+            <text>摊牌了，我就是千亿富豪</text>
+          </view>
+          <view class="more-btn">更多></view>
+        </view>
+        <scroll-view class="film-list" scroll-x="true">
+          <view class="film-item" wx:for="{{filmSection3}}" wx:key="id">
+            <image class="film-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+            <view class="film-title">{{item.title}}</view>
+            <view class="film-tags">
+              <text>{{item.tags}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <!-- 第四个剧集区块 -->
+      <view class="film-section">
+        <view class="section-header">
+          <view class="section-title">
+            <view class="title-icon"></view>
+            <text>先婚后爱，闪婚老公是豪门</text>
+          </view>
+          <view class="more-btn">更多></view>
+        </view>
+        <scroll-view class="film-list" scroll-x="true">
+          <view class="film-item" wx:for="{{filmSection4}}" wx:key="id">
+            <image class="film-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+            <view class="film-title">{{item.title}}</view>
+            <view class="film-tags">
+              <text>{{item.tags}}</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </block>
+
+    <!-- 剧单页面内容 -->
+    <block wx:if="{{activeTab === 'playlist'}}">
+      <view class="empty-state">
+        <text>暂无剧单内容</text>
+      </view>
+    </block>
+  </scroll-view>
 </view>
-
-<!-- 分类标签栏 -->
-<view class="category-bar">
-  <view class="category-item {{activeTab === 'following' ? 'active' : ''}}" bindtap="switchTab" data-tab="following">在追</view>
-  <view class="category-item {{activeTab === 'recommend' ? 'active' : ''}}" bindtap="switchTab" data-tab="recommend">推荐</view>
-  <view class="category-item {{activeTab === 'playlist' ? 'active' : ''}}" bindtap="switchTab" data-tab="playlist">剧单</view>
-</view>
-
-<!-- 内容区域 -->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <!-- 第一个剧集区块 -->
-  <view class="film-section">
-    <view class="section-header">
-      <view class="section-title">
-        <view class="title-icon"></view>
-        <text>9月第一周🔥热门新剧速递</text>
-      </view>
-      <view class="more-btn">更多></view>
-    </view>
-    <scroll-view class="film-list" scroll-x="true">
-      <view class="film-item" wx:for="{{filmSection1}}" wx:key="id">
-        <image class="film-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
-        <view class="film-title">{{item.title}}</view>
-        <view class="film-tags">
-          <text>{{item.tags}}</text>
-        </view>
-      </view>
-    </scroll-view>
-  </view>
-
-  <!-- 第二个剧集区块 -->
-  <view class="film-section">
-    <view class="section-header">
-      <view class="section-title">
-        <view class="title-icon"></view>
-        <text>都市修仙｜我原来这么强吗？</text>
-      </view>
-      <view class="more-btn">更多></view>
-    </view>
-    <scroll-view class="film-list" scroll-x="true">
-      <view class="film-item" wx:for="{{filmSection2}}" wx:key="id">
-        <image class="film-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
-        <view class="film-title">{{item.title}}</view>
-        <view class="film-tags">
-          <text>{{item.tags}}</text>
-        </view>
-      </view>
-    </scroll-view>
-  </view>
-
-  <!-- 第三个剧集区块 -->
-  <view class="film-section">
-    <view class="section-header">
-      <view class="section-title">
-        <view class="title-icon"></view>
-        <text>摊牌了，我就是千亿富豪</text>
-      </view>
-      <view class="more-btn">更多></view>
-    </view>
-    <scroll-view class="film-list" scroll-x="true">
-      <view class="film-item" wx:for="{{filmSection3}}" wx:key="id">
-        <image class="film-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
-        <view class="film-title">{{item.title}}</view>
-        <view class="film-tags">
-          <text>{{item.tags}}</text>
-        </view>
-      </view>
-    </scroll-view>
-  </view>
-
-  <!-- 第四个剧集区块 -->
-  <view class="film-section">
-    <view class="section-header">
-      <view class="section-title">
-        <view class="title-icon"></view>
-        <text>先婚后爱，闪婚老公是豪门</text>
-      </view>
-      <view class="more-btn">更多></view>
-    </view>
-    <scroll-view class="film-list" scroll-x="true">
-      <view class="film-item" wx:for="{{filmSection4}}" wx:key="id">
-        <image class="film-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
-        <view class="film-title">{{item.title}}</view>
-        <view class="film-tags">
-          <text>{{item.tags}}</text>
-        </view>
-      </view>
-    </scroll-view>
-  </view>
-</scroll-view>
-
