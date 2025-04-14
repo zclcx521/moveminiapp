@@ -1,4 +1,6 @@
 // index.ts
+import { request } from '../../utils/http'
+
 // 获取应用实例
 const app = getApp<IAppOption>()
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
@@ -13,17 +15,8 @@ Component({
     hasUserInfo: false,
     canIUseGetUserProfile: wx.canIUse('getUserProfile'),
     canIUseNicknameComp: wx.canIUse('input.type.nickname'),
-    // 视频数据
-    videoList: [
-      {
-        id: 1,
-        title: '迈特科技专注做短剧的公司',
-        subtitle: 'IAA&IAP',
-        coverUrl: 'https://picsum.photos/300/400',
-        tags: ['海外', '抖音', '快手', '微信'],
-        adTags: ['秒杀广告', '版权交易']
-      }
-    ],
+    // 短剧列表数据
+    dramaList: [],
     // 热门榜单数据
     trendingList: [
       { rank: 1, name: '王爷的贴身女刺客', views: '482.5w', trending: 'up' },
@@ -33,10 +26,89 @@ Component({
       { rank: 5, name: '双世萌妃2', views: '172.5w', trending: 'up' }
     ],
     // 分类标签
-    categories: ['推荐', '古装', '重生', '恋爱', '职场', '复仇', '都市'],
+    categories: ['推荐'],
     activeCategory: '推荐',
   },
+  lifetimes: {
+    attached() {
+      // 组件加载时获取分类数据和推荐短剧
+      this.fetchCategories()
+      this.fetchRecommendedDramas()
+    }
+  },
+
   methods: {
+    // 获取推荐短剧数据
+    async fetchRecommendedDramas() {
+      try {
+        const data = await request<any[]>({
+          url: '/api/drama/recommended/',
+          method: 'GET'
+        })
+        
+        // 处理返回的短剧数据
+        const formattedDramas = data.map(drama => ({
+          id: drama.id,
+          title: drama.title,
+          coverUrl: drama.cover,
+          description: drama.description,
+          playCount: drama.play_count,
+          categories: drama.categories,
+          director: drama.director,
+          totalEpisodes: drama.total_episodes
+        }))
+        
+        this.setData({
+          dramaList: formattedDramas
+        })
+      } catch (error) {
+        console.error('获取推荐短剧失败：', error)
+        wx.showToast({
+          title: '获取推荐短剧失败',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+    },
+
+    // 获取分类数据
+    async fetchCategories() {
+      try {
+        const data = await request<any[]>({
+          url: '/api/drama/categories/',
+          method: 'GET'
+        })
+        
+        // 从API响应中提取类别名称
+        const apiCategories = data.map(category => category.name)
+        // 确保"推荐"始终在第一位，并与API返回的类别合并
+        const allCategories = ['推荐', ...apiCategories]
+        
+        this.setData({
+          categories: allCategories,
+          // 如果还没有选中的分类，默认选中"推荐"
+          activeCategory: this.data.activeCategory || allCategories[0]
+        })
+      } catch (error) {
+        console.error('请求分类接口失败：', error)
+        wx.showToast({
+          title: '获取分类失败',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+    },
+
+    // 分类点击事件处理
+    onCategoryTap(e: any) {
+      const category = e.currentTarget.dataset.category
+      this.setData({
+        activeCategory: category
+      })
+      // TODO: 根据选中的分类加载对应的内容
+      console.log('切换到分类：', category)
+    },
+
     // 事件处理函数
     bindViewTap() {
       wx.navigateTo({

@@ -12,13 +12,15 @@
 
 <!-- 分类标签栏 -->
 <view class="category-bar">
-  <view class="category-item active">推荐</view>
-  <view class="category-item">古装</view>
-  <view class="category-item">重生</view>
-  <view class="category-item">恋爱</view>
-  <view class="category-item">职场</view>
-  <view class="category-item">复仇</view>
-  <view class="category-item">都市</view>
+  <view 
+    wx:for="{{categories}}" 
+    wx:key="*this"
+    class="category-item {{item === activeCategory ? 'active' : ''}}"
+    bindtap="onCategoryTap"
+    data-category="{{item}}"
+  >
+    {{item}}
+  </view>
 </view>
 
 <!-- 内容区域 -->
@@ -26,7 +28,7 @@
   <!-- 主要视频内容 -->
   <view class="video-container">
     <image class="video-cover" src="https://picsum.photos/300/400" mode="aspectFill"></image>
-    <view class="video-title">迈特科技专注做短剧的公司</view>
+    <view class="video-title">光屿影创专注做短剧的公司</view>
     <view class="video-subtitle">IAA&IAP</view>
     <view class="video-tags">
       <text class="tag">海外</text>
@@ -113,48 +115,19 @@
     </view>
   </view>
 
-  <!-- 电影瀑布流区域 -->
+  <!-- 推荐短剧瀑布流区域 -->
   <view class="waterfall-container">
-    <view class="waterfall-item">
-      <image class="movie-cover" src="https://picsum.photos/200/300" mode="aspectFill"></image>
+    <view class="waterfall-item" 
+          wx:for="{{dramaList}}" 
+          wx:key="id"
+          bindtap="onDramaTap"
+          data-id="{{item.id}}">
+      <image class="movie-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
       <view class="movie-info">
-        <view class="movie-title">演员请就位</view>
+        <view class="movie-title">{{item.title}}</view>
         <view class="movie-stats">
-          <view class="stat-item">▶ 98.7w</view>
-          <view class="stat-item">❤ 9.6w</view>
-        </view>
-      </view>
-    </view>
-
-    <view class="waterfall-item">
-      <image class="movie-cover" src="https://picsum.photos/200/300" mode="aspectFill"></image>
-      <view class="movie-info">
-        <view class="movie-title">我在地府开当铺</view>
-        <view class="movie-stats">
-          <view class="stat-item">▶ 214.5w</view>
-          <view class="stat-item">❤ 21.3w</view>
-        </view>
-      </view>
-    </view>
-
-    <view class="waterfall-item">
-      <image class="movie-cover" src="https://picsum.photos/200/300" mode="aspectFill"></image>
-      <view class="movie-info">
-        <view class="movie-title">抢个乞丐做夫君</view>
-        <view class="movie-stats">
-          <view class="stat-item">▶ 131.4w</view>
-          <view class="stat-item">❤ 15.8w</view>
-        </view>
-      </view>
-    </view>
-
-    <view class="waterfall-item">
-      <image class="movie-cover" src="https://picsum.photos/200/300" mode="aspectFill"></image>
-      <view class="movie-info">
-        <view class="movie-title">契约圣女</view>
-        <view class="movie-stats">
-          <view class="stat-item">▶ 101.9w</view>
-          <view class="stat-item">❤ 144.4w</view>
+          <view class="stat-item">▶ {{item.playCount}}w</view>
+          <view class="stat-item">{{item.totalEpisodes}}集</view>
         </view>
       </view>
     </view>

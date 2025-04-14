@@ -22,15 +22,15 @@ App<IAppOption>({
     // 获取并缓存token
     try {
       const token = await getToken()
-      wx.setStorageSync('token', token)
       this.globalData.isTokenReady = true
       console.log('Token获取成功')
     } catch (error) {
       console.error('Token获取失败:', error)
-      // 这里可以添加重试逻辑或错误提示
+      // 这里可以添加重试逻辑
       wx.showToast({
-        title: 'Token获取失败',
-        icon: 'none'
+        title: 'Token获取失败，请检查网络连接',
+        icon: 'none',
+        duration: 3000
       })
     }
 
