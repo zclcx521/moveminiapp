@@ -29,6 +29,23 @@
 
     <!-- 推荐页面内容 -->
     <block wx:if="{{activeTab === 'recommend'}}">
+      <!-- 加载状态 -->
+      <view class="loading-state" wx:if="{{!currentDrama}}">
+        <text>正在加载推荐短剧...</text>
+      </view>
+      <!-- 视频播放器 -->
+      <video-player
+        wx:if="{{currentDrama}}"
+        videoUrl="{{currentDrama.videoUrl}}"
+        title="{{currentDrama.title}}"
+        coverUrl="{{currentDrama.coverUrl}}"
+        tags="{{currentDrama.tags}}"
+        bindplay="onVideoPlay"
+        bindpause="onVideoPause"
+        bindended="onVideoEnded"
+        bindtimeupdate="onVideoTimeUpdate"
+      ></video-player>
+
       <!-- 第一个剧集区块 -->
       <view class="film-section">
         <view class="section-header">

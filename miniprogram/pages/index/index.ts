@@ -100,13 +100,44 @@ Component({
     },
 
     // 分类点击事件处理
-    onCategoryTap(e: any) {
+    async onCategoryTap(e: any) {
       const category = e.currentTarget.dataset.category
       this.setData({
         activeCategory: category
       })
-      // TODO: 根据选中的分类加载对应的内容
-      console.log('切换到分类：', category)
+      
+      try {
+        if (category === '推荐') {
+          await this.fetchRecommendedDramas()
+        } else {
+          const data = await request<any[]>({
+            url: `/api/drama/category/${category}/`,
+            method: 'GET'
+          })
+          
+          const formattedDramas = data.map(drama => ({
+            id: drama.id,
+            title: drama.title,
+            coverUrl: drama.cover,
+            description: drama.description,
+            playCount: drama.play_count,
+            categories: drama.categories,
+            director: drama.director,
+            totalEpisodes: drama.total_episodes
+          }))
+          
+          this.setData({
+            dramaList: formattedDramas
+          })
+        }
+      } catch (error) {
+        console.error(`获取${category}分类短剧失败：`, error)
+        wx.showToast({
+          title: '获取分类内容失败',
+          icon: 'error',
+          duration: 2000
+        })
+      }
     },
 
     // 事件处理函数

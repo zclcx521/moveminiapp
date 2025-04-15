@@ -1,7 +1,10 @@
 // films.ts
+import { getRecommendedDramas } from '../../utils/api'
+
 Page({
   data: {
     activeTab: 'recommend', // 默认选中推荐标签
+    currentDrama: null, // 当前播放的短剧
     // 第一个剧集区块数据
     filmSection1: [
       {
@@ -111,11 +114,47 @@ Page({
       }
     ]
   },
+  // 页面加载
+  onLoad() {
+    this.loadRecommendedDrama()
+    this.loadLastPlayInfo()
+  },
+
   // 切换标签
   switchTab(e: any) {
-    const tab = e.currentTarget.dataset.tab;
+    const tab = e.currentTarget.dataset.tab
     this.setData({
       activeTab: tab
-    });
+    })
+  },
+
+  // 加载推荐短剧
+  async loadRecommendedDrama() {
+    try {
+      amas && dramas.length > 0) {
+        this.setData({
+          currentDrama: {
+            ...a 加载推荐短剧失败:', error)
+      wx.showToast({
+        tit短  t laly[0]ageSync('lastPlayInfo')
+    is[0]f (lastPlayI?nfo) {
+   e||t''a
+     curre:astPla
+ },
+
+  // 视频播放事件处理
+  onVideoPlay() {
+    console.log('视频开始播放')
+  },
+
+  onVideoPause() {
+    console.log('视频暂停oEnded() {
+    console.log('视频播放结p(eny) {.currentDrama) {
+      const videoInfo = {
+        ...this.data.currentDrama,
+        currentTime: e.detail.currentTime
+      }
+      wx.setStorageSync('lastPlayInfo', videoInfo)
+    }
   }
 })
